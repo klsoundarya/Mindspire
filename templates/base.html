@@ -15,6 +15,12 @@
     <meta name="keywords"
         content="Montessori tech tools, hands-on learning, educational toys, STEM for kids, Montessori-inspired products, experiential learning tools, child development, early education, Montessori e-commerce, Montessori technology, interactive learning tools, cognitive development toys, educational technology for children, innovative Montessori tools, hands-on STEM learning, Montessori home learning, kids tech gadgets, Montessori classroom essentials, learning through play, Montessori STEM kits.">
     <title>{% block title %} Mindspire {% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicons/site.webmanifest' %}">
     {% endblock %}
 
     {% block extra_meta %}
@@ -40,7 +46,6 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock %}
 
-
     {% block corejs %}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -59,33 +64,53 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top"></header>
+    <nav class="container-fluid fixed-top d-flex flex-column h-100">
+        <div class="wrapper">
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-expand-md fixed-top">
+                <div class="container-fluid" id="nav-style">
+                    <!-- Logo -->
+                    <a class="navbar-brand" id="logo" href="{% url 'home' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="Mindspire Logo">Mindspire
+                    </a>
 
-    <!-- displaying messages -->
-    {% if messages %}
-    <div class="container centered">
-        <div class="row">
-            <div class="col-md-8 offset-md-2 mt-2">
-                {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible
+                    <!-- Navbar Toggle Button -->
+                    <button class="navbar-toggler toggler-custom" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+
+
+                    <!-- displaying messages -->
+                    {% if messages %}
+                    <div class="container centered">
+                        <div class="row">
+                            <div class="col-md-8 offset-md-2 mt-2">
+                                {% for message in messages %}
+                                <div class="alert {{ message.tags }} alert-dismissible
           fade show" id="message" role="alert">
-                    {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    {% endif %}
+                                    {{ message | safe }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
 
-    {% block page_header %}
-    {% endblock %}
+                    <main class="flex-shrink-0 main-bg">
 
-    {% block content %}
-    {% endblock %}
+                        {% block content %}
+                        <!-- Placeholder for page-specific content -->
+                        {% endblock content %}
 
-    {% block postloadjs %}
-    {% endblock %}
+                    </main>
+
+                    {% block postloadjs %}
+                    {% endblock %}
 
 
 </body>
