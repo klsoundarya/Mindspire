@@ -1,1 +1,1 @@
-web: gunicorn echo_animals.wsgi
+web: gunicorn mindspire.wsgi
