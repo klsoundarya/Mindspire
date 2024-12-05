@@ -6,13 +6,29 @@
 <head>
 
     {% block meta %}
+    <!-- required meta tags -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="Discover Mindspire – your destination for Montessori-inspired tech tools that spark creativity and hands-on learning.">
+    <meta name="keywords"
+        content="Montessori tech tools, hands-on learning, educational toys, STEM for kids, Montessori-inspired products, experiential learning tools, child development, early education, Montessori e-commerce, Montessori technology, interactive learning tools, cognitive development toys, educational technology for children, innovative Montessori tools, hands-on STEM learning, Montessori home learning, kids tech gadgets, Montessori classroom essentials, learning through play, Montessori STEM kits.">
+    <title>{% block title %} Mindspire {% endblock %}</title>
     {% endblock %}
 
     {% block extra_meta %}
     {% endblock %}
+
+    <!-- Google Fonts CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     {% block corecss %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -20,6 +36,8 @@
     {% endblock %}
 
     {% block extra_css %}
+     <!-- Custom CSS -->
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock %}
 
     {% block corejs %}
@@ -36,14 +54,27 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Mindspire {% block extra_title %}{% endblock %}</title>
+    <title>{% block extra_title %}{% endblock %}</title>
 </head>
 
 <body>
     <header class="container-fluid fixed-top"></header>
 
+    <!-- displaying messages -->
     {% if messages %}
-    <div class="message-container"></div>
+    <div class="container centered">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 mt-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible
+          fade show" id="message" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     {% endif %}
 
     {% block page_header %}
